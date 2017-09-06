@@ -1,0 +1,6 @@
+
+<RCC>
+  <qresource prefix="filelocationsinkstep">
+    <file>images/data-sink.png</file>
+  </qresource>
+</RCC>
