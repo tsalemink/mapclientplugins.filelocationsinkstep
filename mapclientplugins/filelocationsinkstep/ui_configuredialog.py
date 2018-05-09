@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\gchr006\mapclient-DTP-plugins\mapclientplugins.filelocationsinkstep\mapclientplugins\filelocationsinkstep\qt\configuredialog.ui'
+# Form implementation generated from reading ui file 'qt\configuredialog.ui'
 #
-# Created: Thu Sep  7 11:21:09 2017
+# Created: Mon May  7 15:11:48 2018
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -18,14 +18,28 @@ class Ui_ConfigureDialog(object):
         self.configGroupBox = QtGui.QGroupBox(ConfigureDialog)
         self.configGroupBox.setTitle("")
         self.configGroupBox.setObjectName("configGroupBox")
-        self.formLayout = QtGui.QFormLayout(self.configGroupBox)
-        self.formLayout.setObjectName("formLayout")
+        self.gridLayout_2 = QtGui.QGridLayout(self.configGroupBox)
+        self.gridLayout_2.setObjectName("gridLayout_2")
         self.label0 = QtGui.QLabel(self.configGroupBox)
         self.label0.setObjectName("label0")
-        self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.label0)
+        self.gridLayout_2.addWidget(self.label0, 0, 0, 1, 1)
         self.lineEdit0 = QtGui.QLineEdit(self.configGroupBox)
         self.lineEdit0.setObjectName("lineEdit0")
-        self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.lineEdit0)
+        self.gridLayout_2.addWidget(self.lineEdit0, 0, 1, 1, 1)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.lineEditFileLocation = QtGui.QLineEdit(self.configGroupBox)
+        self.lineEditFileLocation.setObjectName("lineEditFileLocation")
+        self.horizontalLayout.addWidget(self.lineEditFileLocation)
+        self.pushButtonFileChooser = QtGui.QPushButton(self.configGroupBox)
+        self.pushButtonFileChooser.setObjectName("pushButtonFileChooser")
+        self.horizontalLayout.addWidget(self.pushButtonFileChooser)
+        self.gridLayout_2.addLayout(self.horizontalLayout, 2, 1, 1, 1)
+        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.gridLayout_2.addItem(spacerItem, 3, 1, 1, 1)
+        self.label1 = QtGui.QLabel(self.configGroupBox)
+        self.label1.setObjectName("label1")
+        self.gridLayout_2.addWidget(self.label1, 2, 0, 1, 1)
         self.gridLayout.addWidget(self.configGroupBox, 0, 0, 1, 1)
         self.buttonBox = QtGui.QDialogButtonBox(ConfigureDialog)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
@@ -41,4 +55,6 @@ class Ui_ConfigureDialog(object):
     def retranslateUi(self, ConfigureDialog):
         ConfigureDialog.setWindowTitle(QtGui.QApplication.translate("ConfigureDialog", "Configure Step", None, QtGui.QApplication.UnicodeUTF8))
         self.label0.setText(QtGui.QApplication.translate("ConfigureDialog", "identifier:  ", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButtonFileChooser.setText(QtGui.QApplication.translate("ConfigureDialog", "...", None, QtGui.QApplication.UnicodeUTF8))
+        self.label1.setText(QtGui.QApplication.translate("ConfigureDialog", "File:  ", None, QtGui.QApplication.UnicodeUTF8))
 
