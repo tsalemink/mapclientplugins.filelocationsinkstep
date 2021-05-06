@@ -6,7 +6,7 @@ import os
 import json
 import shutil
 
-from PySide import QtGui
+from PySide2 import QtGui, QtWidgets
 
 from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.filelocationsinkstep.configuredialog import ConfigureDialog
@@ -23,7 +23,7 @@ class FileLocationSinkStep(WorkflowStepMountPoint):
         self._configured = False # A step cannot be executed until it has been configured.
         self._category = 'Sink'
         # Add any other initialisation code here:
-        self._icon =  QtGui.QImage(':/filelocationsinkstep/images/data-sink.png')
+        self._icon = QtGui.QImage(':/filelocationsinkstep/images/data-sink.png')
         # Ports:
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#uses',
@@ -64,7 +64,7 @@ class FileLocationSinkStep(WorkflowStepMountPoint):
         then set:
             self._configured = True
         """
-        dlg = ConfigureDialog(QtGui.QApplication.activeWindow().currentWidget())
+        dlg = ConfigureDialog(QtWidgets.QApplication.activeWindow().currentWidget())
         dlg.setWorkflowLocation(self._location)
         dlg.identifierOccursCount = self._identifierOccursCount
         dlg.setConfig(self._config)
