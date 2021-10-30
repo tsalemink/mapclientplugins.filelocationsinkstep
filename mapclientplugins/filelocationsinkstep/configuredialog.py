@@ -50,6 +50,16 @@ class ConfigureDialog(QtWidgets.QDialog):
         if result == QtWidgets.QMessageBox.Yes:
             QtWidgets.QDialog.accept(self)
 
+    def _output_location(self, location=None):
+        if location is None:
+            display_path = self._ui.lineEditFileLocation.text()
+        else:
+            display_path = location
+        if self._workflow_location and os.path.isabs(display_path):
+            display_path = os.path.relpath(display_path, self._workflow_location)
+
+        return display_path
+
     def setWorkflowLocation(self, location):
         self._workflow_location = location
 
@@ -68,7 +78,12 @@ class ConfigureDialog(QtWidgets.QDialog):
         else:
             self._ui.lineEdit0.setStyleSheet(INVALID_STYLE_SHEET)
 
-        valid_destination = True if len(self._ui.lineEditFileLocation.text()) > 0 else False
+        non_empty = len(self._ui.lineEditFileLocation.text())
+        dir_path = self._output_location()
+        if self._workflow_location:
+            dir_path = os.path.join(self._workflow_location, dir_path)
+
+        valid_destination = non_empty and os.path.isdir(dir_path)
 
         return valid_id and valid_destination
 
@@ -79,9 +94,7 @@ class ConfigureDialog(QtWidgets.QDialog):
         identifier over the whole of the workflow.
         """
         self._previousIdentifier = self._ui.lineEdit0.text()
-        config = {}
-        config['identifier'] = self._ui.lineEdit0.text()
-        config['file'] = self._ui.lineEditFileLocation.text()
+        config = {'identifier': self._ui.lineEdit0.text(), 'file': self._output_location()}
         if self._previousLocation:
             config['previous_location'] = os.path.relpath(self._previousLocation, self._workflow_location)
         else:
@@ -108,4 +121,5 @@ class ConfigureDialog(QtWidgets.QDialog):
 
         if location:
             self._previousLocation = location
-            self._ui.lineEditFileLocation.setText(os.path.relpath(location, self._workflow_location))
+            display_location = self._output_location(location)
+            self._ui.lineEditFileLocation.setText(display_location)
