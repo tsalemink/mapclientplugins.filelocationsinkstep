@@ -81,6 +81,6 @@ class Ui_ConfigureDialog(object):
         self.configGroupBox.setTitle("")
         self.label0.setText(QCoreApplication.translate("ConfigureDialog", u"identifier:  ", None))
         self.pushButtonFileChooser.setText(QCoreApplication.translate("ConfigureDialog", u"...", None))
-        self.label1.setText(QCoreApplication.translate("ConfigureDialog", u"File:  ", None))
+        self.label1.setText(QCoreApplication.translate("ConfigureDialog", u"Output directory:  ", None))
     # retranslateUi
 
