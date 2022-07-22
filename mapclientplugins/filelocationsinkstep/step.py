@@ -31,8 +31,7 @@ class FileLocationSinkStep(WorkflowStepMountPoint):
         # Port data:
         self._portData0 = None # http://physiomeproject.org/workflow/1.0/rdf-schema#file_location
         # Config:
-        self._config = {}
-        self._config['identifier'] = ''
+        self._config = {'identifier': ''}
 
     def execute(self):
         """
