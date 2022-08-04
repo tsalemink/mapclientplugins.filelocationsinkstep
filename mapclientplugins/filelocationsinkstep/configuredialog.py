@@ -1,7 +1,8 @@
 
 import os
+import webbrowser
 
-from PySide2 import QtWidgets
+from PySide2 import QtCore, QtWidgets
 from mapclientplugins.filelocationsinkstep.ui_configuredialog import Ui_ConfigureDialog
 
 INVALID_STYLE_SHEET = 'background-color: rgba(239, 0, 0, 50)'
@@ -30,7 +31,14 @@ class ConfigureDialog(QtWidgets.QDialog):
         self._workflow_location = None
         self._previousLocation = ''
 
+        self.setWhatsThis('<html>Please read the documentation available \n<a href="https://abi-mapping-tools.readthedocs.io/en/latest/mapclientplugins.filelocationsinkstep/docs/index.html">here</a> for further details.</html>')
+
         self._makeConnections()
+
+    def event(self, e):
+        if e.type() == QtCore.QEvent.Type.WhatsThisClicked:
+            webbrowser.open(e.href())
+        return super().event(e)
 
     def _makeConnections(self):
         self._ui.lineEdit0.textChanged.connect(self.validate)
