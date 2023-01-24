@@ -6,7 +6,7 @@ import os
 import json
 import shutil
 
-from PySide2 import QtGui, QtWidgets
+from PySide6 import QtGui
 
 from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.filelocationsinkstep.configuredialog import ConfigureDialog
